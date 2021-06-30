@@ -2,12 +2,12 @@
 A R package designed for singleron and ONT data barcode assignment
 
 # Requirements
-B2B (https://github.com/tangchao7498/CBUC)
-Biostrings
-IRanges
-rDNAse
-data.table
-ShortRead
+B2B (https://github.com/tangchao7498/CBUC)\
+Biostrings \
+IRanges \
+rDNAse \
+data.table \
+ShortRead \
 DECIPHER
 
 # Installation
