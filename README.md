@@ -16,6 +16,7 @@ library(devtools)
 devtools::install_github("zhangdannn/SinONTabr")
 
 # Documentation
+```
 library packages
 library(SinONTbar)
 library(B2B)
@@ -23,3 +24,4 @@ library(data.table)
 library(ShortRead)
 library(Biostrings)
 library(DECIPHER)
+```
