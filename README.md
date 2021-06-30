@@ -9,11 +9,14 @@ rDNAse
 data.table
 ShortRead
 DECIPHER
+
 # Installation
 Your can install B2B from GitHub by:
 
+```
 library(devtools)
 devtools::install_github("zhangdannn/SinONTabr")
+```
 
 # Run example
 ```
