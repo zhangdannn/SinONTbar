@@ -1,0 +1,17 @@
+Package: SinONTbar
+Type: Package
+Title: A tool of R to do cell barcode assignment between singleron data and ONT1D data
+Version: 0.1.0
+Author: Dan Zhang
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: A tool of R to do cell barcode assignment between singleron data and ONT1D data
+License: GPL
+Encoding: UTF-8
+LazyData: true
+Imports:
+    B2B, 
+    data.table,
+    ShortRead,
+    Biostrings,
+    DECIPHER,
+RoxygenNote: 7.1.1
