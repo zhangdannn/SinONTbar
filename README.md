@@ -15,13 +15,16 @@ Your can install B2B from GitHub by:
 library(devtools)
 devtools::install_github("zhangdannn/SinONTabr")
 
-# Documentation
+# Run example
 ```
-library packages
 library(SinONTbar)
 library(B2B)
 library(data.table)
 library(ShortRead)
 library(Biostrings)
 library(DECIPHER)
+
+table = SinONTbar::BarcodeAssign(ONTfastq = system.file("data", "nanopore_small.fq", package = "SinONTbar"),
+              Sinbarcode = system.file("data", "Singleron.barcodes.tsv.gz", package = "SinONTbar"),
+              MaxMisMatchvalue = 10)
 ```
