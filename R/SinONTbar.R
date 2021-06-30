@@ -235,11 +235,7 @@ PattafourSeq <- function(ONTfastq){
   BsTab <- data.table(Read = IDTab$V1, Seq = as.character((lapply(Bs, function(x){as.character(x)}))), Strand = as.character(lapply(Bs, function(x){names(x)})))
   BsTab$Strand <- gsub("NULL", NA, BsTab$Strand)
   BsTab <- as.data.frame(BsTab[!is.na(BsTab$Strand), ])
-  BCs <-DNAStringSet(BsTab$Seq)
-  names(BCs) <- BsTab$Read
-  BCs <- BCs[width(BCs) >= 65]
-  BCs
-  return(BCs)
+  return(BsTab)
 }
 
 
@@ -255,7 +251,10 @@ PattafourSeq <- function(ONTfastq){
 #'
 #' @examples
 BarcodeAssign <- function(ONTfastq, Sinbarcode, MaxMisMatchvalue = 10){
-  BCs = PattafourSeq(ONTfastq = ONTfastq)
+  BsTab = PattafourSeq(ONTfastq = ONTfastq)
+  BCs <-DNAStringSet(BsTab$Seq)
+  names(BCs) <- BsTab$Read
+  BCs <- BCs[width(BCs) >= 65]
   NGS <- fread(Sinbarcode, header = FALSE)
   ONTSB <- subseq(BCs, 1, 57)
   NGSSB <- DNAStringSet(unique(NGS$V1))
@@ -263,7 +262,6 @@ BarcodeAssign <- function(ONTfastq, Sinbarcode, MaxMisMatchvalue = 10){
   ONT2NGS <- mclapply(seq_along(ONTSB), function(i) B2B:::MatchSB2(ONT = ONTSB[[i]], SB = NGSSB, MaxMisMatch = MaxMisMatchvalue), mc.cores = 1)
   ONT2NGS <- as.data.frame(data.table(Read = names(ONTSB), SB = mapply(as.character, ONT2NGS)))
   ONT2NGS <- ONT2NGS[!is.na(ONT2NGS$SB), ]
-
   R2B0 <- merge(BsTab, ONT2NGS, by = "Read")
   return(R2B0)
 }
