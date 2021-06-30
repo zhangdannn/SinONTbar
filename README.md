@@ -31,4 +31,4 @@ table = SinONTbar::BarcodeAssign(ONTfastq = system.file("data", "nanopore_small.
               Sinbarcode = system.file("data", "Singleron.barcodes.tsv.gz", package = "SinONTbar"),
               MaxMisMatchvalue = 10)
 ```
-![image](https://github.com/zhangdannn/SinONTbar/result.png)
+![image](./result.png)
