@@ -45,7 +45,7 @@ table = SinONTbar::BarcodeAssign(ONTfastq = system.file("data", "nanopore_small.
   NGS <- fread(Sinbarcode, header = FALSE)
   ONTSB <- subseq(BCs, 1, 57)
   NGSSB <- DNAStringSet(unique(NGS$V1))
-  MaxMisMatchvalue = MaxMisMatchvalue
+  MaxMisMatchvalue = 10
   ONT2NGS <- mclapply(seq_along(ONTSB), function(i) B2B:::MatchSB2(ONT = ONTSB[[i]], SB = NGSSB, MaxMisMatch = MaxMisMatchvalue), mc.cores = 1)
   ONT2NGS <- as.data.frame(data.table(Read = names(ONTSB), SB = mapply(as.character, ONT2NGS)))
   ONT2NGS <- ONT2NGS[!is.na(ONT2NGS$SB), ]
